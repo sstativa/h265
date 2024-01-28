@@ -16,7 +16,7 @@ Options:
   -f, --ffmpeg <file>            path to ffmpeg (default: "ffmpeg")
   -u, --uid <uid>                UID (default: 501)
   -g, --gid <gid>                GID (default: 20)
-  -h, --height <height>          scale to height (keep aspect ratio)
+  -h, --height <height>          scale to height and keep aspect ratio
   -k, --keep                     keep original files
   -l, --log                      create log file
   --hw                           use h264_ni_locan_dec decoder instead of CPU decoder
@@ -37,8 +37,6 @@ Options:
 
 - one by one conversion, use `/usr/local/bin/ffmpeg`, keep original files, create log file, use CPU decoder, set video sync method to `vfr`, enable async, convert audio stream to AAC, convert all files in `/mnt/usb/media` and save them to `/mnt/usb/converted/`.
 
-`/script/h265 -m 1 -f /script/bin/v3.3.0/FFmpeg/ffmpeg -u $PUID -g $PGID --vsync vfr --keep /in /out`
-
-/script/h265 -m 1 -f /script/bin/v3.3.0/FFmpeg/ffmpeg -u $PUID -g $PGID --vsync vfr --keep /in /out
 ### Notes
-`uid` and `gid` are only useful if the script runs inside a Docker container.
+* `uid` and `gid` are only useful if the script runs inside a Docker container.
+* use --async if audio is not synchoronized with video (common issue for livestreams recordings).
